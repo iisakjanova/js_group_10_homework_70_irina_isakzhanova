@@ -3,7 +3,6 @@ import {PRICE_LIST} from "../../constants";
 
 const initialState = {
     dishes: '',
-    totalAmount: '',
 };
 
 const dishesReducer = (state = initialState, action) => {
