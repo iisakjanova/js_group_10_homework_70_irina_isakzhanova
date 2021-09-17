@@ -1,13 +1,13 @@
 import React from 'react';
 import {CssBaseline} from "@material-ui/core";
 
-import Dishes from "./components/Dishes/Dishes";
+import Menu from "./containers/Menu/Menu";
 
 const App = () => {
     return (
         <div>
             <CssBaseline />
-            <Dishes />
+            <Menu />
         </div>
     );
 };

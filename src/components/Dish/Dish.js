@@ -3,8 +3,8 @@ import {Button, Grid, makeStyles, Paper, Typography} from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
     item: {
-        padding: "10px",
-        marginBottom: "20px",
+        padding: theme.spacing(2),
+        marginBottom: theme.spacing(4),
         alignItems: "center",
     },
     image: {
@@ -12,8 +12,8 @@ const useStyles = makeStyles(theme => ({
         display: "block",
     },
     info: {
-        paddingRight: "10px",
-        paddingLeft: "10px",
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2),
     },
     button: {
         marginLeft: "auto",
@@ -27,13 +27,13 @@ const Dish = (props) => {
         <Paper>
             <Grid container direction="row" className={classes.item}>
                 <Grid item>
-                    <img src={props.image} className={classes.image}/>
+                    <img src={props.image} alt={props.name} className={classes.image} />
                 </Grid>
                 <Grid item className={classes.info}>
                     <Typography variant="subtitle1">{props.name}</Typography>
                     <Typography variant="h6">{props.price} KGS</Typography>
                 </Grid>
-                <Button variant="contained" color="default" className={classes.button}>Add to cart</Button>
+                <Button variant="contained" color="default" onClick={props.onAdd} className={classes.button}>Add to cart</Button>
             </Grid>
         </Paper>
     );
