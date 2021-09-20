@@ -1,4 +1,8 @@
-import {GET_DISHES_FAILURE, GET_DISHES_REQUEST, GET_DISHES_SUCCESS} from "../actions/dishesActions";
+import {
+    GET_DISHES_FAILURE,
+    GET_DISHES_REQUEST,
+    GET_DISHES_SUCCESS
+} from "../actions/dishesActions";
 
 const initialState = {
     dishes: '',
