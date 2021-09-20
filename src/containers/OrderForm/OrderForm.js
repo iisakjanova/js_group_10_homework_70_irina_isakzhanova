@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Grid, makeStyles, TextField} from "@material-ui/core";
 import {useDispatch} from "react-redux";
+
 import {createOrder, initOrderData, setModalOpen} from "../../store/actions/ordersActions";
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +29,7 @@ const OrderForm = () => {
 
         setCustomer(prev => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
     };
 

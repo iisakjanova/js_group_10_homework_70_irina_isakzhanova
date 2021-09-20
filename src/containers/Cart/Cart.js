@@ -1,11 +1,11 @@
 import React from 'react';
-import {Button, Grid, IconButton, makeStyles, Paper, Typography} from "@material-ui/core";
+import {Button, Grid, makeStyles, Paper, Typography} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {DeleteForever} from "@material-ui/icons";
 
 import {DELIVERY_PRICE} from "../../constants";
 import {removeDishFromCart, setModalOpen} from "../../store/actions/ordersActions";
 import PlaceOrderModal from "../PlaceOrderModal/PlaceOrderModal";
+import CartItem from "../../components/CartItem/CartItem";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -60,17 +60,13 @@ const Cart = () => {
                     ?
                     <>
                         {Object.keys(dishes).map(key => (
-                            <Grid container key={key} className={classes.item}>
-                                <Typography variant={"subtitle1"}>
-                                    {dishes[key].name} x {dishes[key].qty}
-                                </Typography>
-                                <Typography variant="subtitle1" className={classes.price}>
-                                    {dishes[key].totalPrice}
-                                </Typography>
-                                <IconButton onClick={() => handleRemoveDish(key)}>
-                                    <DeleteForever />
-                                </IconButton>
-                            </Grid>
+                            <CartItem
+                                key={key}
+                                name={dishes[key].name}
+                                qty={dishes[key].qty}
+                                totalPrice={dishes[key].totalPrice}
+                                onRemove={() => handleRemoveDish(key)}
+                            />
                         ))}
                         <Grid container className={classes.bottomBlock}>
                             <Typography variant="subtitle1">

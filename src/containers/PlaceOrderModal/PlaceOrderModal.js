@@ -1,6 +1,7 @@
 import React from 'react';
 import {Box, CircularProgress, Grid, Modal, Typography} from "@material-ui/core";
 import {useSelector} from "react-redux";
+
 import OrderForm from "../OrderForm/OrderForm";
 
 const style = {
@@ -34,8 +35,12 @@ const PlaceOrderModal = (props) => {
                         </Grid>
                     </Grid>
                     <OrderForm />
-                    {loading ? <CircularProgress /> : null }
-
+                    {loading
+                        ?
+                        <CircularProgress />
+                        :
+                        null
+                    }
                 </Box>
             </Modal>
         </div>

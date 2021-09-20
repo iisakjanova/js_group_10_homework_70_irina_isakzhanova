@@ -28,7 +28,7 @@ const ordersReducer = (state = initialState, action) => {
                             name: action.payload.name,
                             qty: 1,
                             totalPrice: action.payload.price,
-                        }
+                        },
                     },
                 };
             }
@@ -41,7 +41,7 @@ const ordersReducer = (state = initialState, action) => {
                         name: action.payload.name,
                         qty: state.dishes[action.payload.id].qty + 1,
                         totalPrice: state.dishes[action.payload.id].totalPrice + action.payload.price,
-                    }
+                    },
                 },
             };
         case REMOVE_DISH_FROM_CART:
@@ -49,7 +49,7 @@ const ordersReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                dishes: restDishes
+                dishes: restDishes,
             };
         case SET_MODAL_OPEN:
             return {...state, showOrderModal: action.payload};

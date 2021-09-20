@@ -56,7 +56,8 @@ const Dishes = () => {
                     })}
                 </Grid>
                 :
-                null}
+                null
+            }
         </>
     );
 };

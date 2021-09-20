@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     dishes: '',
-    loading: false
+    loading: false,
 };
 
 const dishesReducer = (state = initialState, action) => {
