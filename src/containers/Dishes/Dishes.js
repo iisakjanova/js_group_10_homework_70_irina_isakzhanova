@@ -40,16 +40,20 @@ const Dishes = () => {
                 dishes
                 ?
                 <Grid container direction="column">
-                    {Object.keys(dishes).map(key => (
-                        <Grid item key={key}>
+                    {Object.keys(dishes).map(key => {
+                        const name = dishes[key].name;
+                        const price = Number(dishes[key].price);
+
+                        return <Grid item key={key}>
                             <Dish
-                                name={dishes[key].name}
-                                price={dishes[key].price}
+                                id={key}
+                                name={name}
+                                price={price}
                                 image={dishes[key].image}
-                                onAdd={() => handleAddDishToCart(key)}
+                                onAdd={() => handleAddDishToCart({name, price, id: key})}
                             />
                         </Grid>
-                    ))}
+                    })}
                 </Grid>
                 :
                 null}

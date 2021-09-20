@@ -1,22 +1,21 @@
-import {ADD_DISH_TO_CART} from "../actions/ordersActions";
-import {PRICE_LIST} from "../../constants";
+import {ADD_DISH_TO_CART, REMOVE_DISH_FROM_CART} from "../actions/ordersActions";
 
 const initialState = {
     dishes: '',
 };
 
-const dishesReducer = (state = initialState, action) => {
+const ordersReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_DISH_TO_CART:
-            if (!state.dishes[action.payload]) {
+            if (!state.dishes[action.payload.id]) {
                 return {
                     ...state,
                     dishes: {
                         ...state.dishes,
-                        [action.payload]: {
-                            name: PRICE_LIST[action.payload].name,
+                        [action.payload.id]: {
+                            name: action.payload.name,
                             qty: 1,
-                            totalPrice: PRICE_LIST[action.payload].price,
+                            totalPrice: action.payload.price,
                         }
                     },
                 };
@@ -26,16 +25,23 @@ const dishesReducer = (state = initialState, action) => {
                 ...state,
                 dishes: {
                     ...state.dishes,
-                    [action.payload]: {
-                        name: PRICE_LIST[action.payload].name,
-                        qty: state.dishes[action.payload].qty + 1,
-                        totalPrice: state.dishes[action.payload].totalPrice + PRICE_LIST[action.payload].price,
+                    [action.payload.id]: {
+                        name: action.payload.name,
+                        qty: state.dishes[action.payload.id].qty + 1,
+                        totalPrice: state.dishes[action.payload.id].totalPrice + action.payload.price,
                     }
                 },
+            };
+        case REMOVE_DISH_FROM_CART:
+            const {[action.payload]: _, ...restDishes} = state.dishes;
+
+            return {
+                ...state,
+                dishes: restDishes
             };
         default:
             return state;
     }
 };
 
-export default dishesReducer;
+export default ordersReducer;

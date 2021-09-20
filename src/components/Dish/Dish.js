@@ -33,7 +33,14 @@ const Dish = (props) => {
                     <Typography variant="subtitle1">{props.name}</Typography>
                     <Typography variant="h6">{props.price} KGS</Typography>
                 </Grid>
-                <Button variant="contained" color="default" onClick={props.onAdd} className={classes.button}>Add to cart</Button>
+                <Button
+                    variant="contained"
+                    color="default"
+                    onClick={props.onAdd}
+                    className={classes.button}
+                >
+                    Add to cart
+                </Button>
             </Grid>
         </Paper>
     );
